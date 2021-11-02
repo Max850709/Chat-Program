@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class MyThread implements Runnable{
     public Socket client;
+
         public MyThread(Socket socket_){
             client=socket_;
         }
@@ -84,41 +85,6 @@ public class MyThread implements Runnable{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-//                    try {
-//                        echoMessage = WSEnd.decodeBytes(dis);
-//                        System.out.println("sending message to client: " + echoMessage);
-//                        WSEnd.sendBack(echoMessage,outputStream); //echoes back the message
-//                        System.out.println("decodeBytes:::::"+echoMessage);
-//                        String[] parsedEcho = echoMessage.split(" ", 3);
-//                        //System.out.println(parsedEcho[0] + " " + parsedEcho[1] + " " + parsedEcho[2]);
-//
-//                        char colonCheck = parsedEcho[1].charAt(0); //for detecting "username: message"
-//                        System.out.println("colon check: "+colonCheck);
-//
-//                        if(parsedEcho[0].equals("join")) {         // client wants to join room
-//                            System.out.println("user joined room");
-//                            String roomName = parsedEcho[1];    // gets room name
-//                            System.out.println("user is in room: " + roomName);
-////                            thisRoom = Room.getRoom(roomName);  // gets or makes room
-////                        thisRoom.sendAllRoomMsgs(client);   // gets all messages from room
-////                        thisRoom.addClient(client);         // adds client socket to room
-//                        }
-//                        else if( colonCheck == ':' ) {  //client wants to send a message
-//                            System.out.println("checking for colon");
-//                            String jsonMsg = "{\"user\": \""+parsedEcho[0]+
-//                                              "\", \"message\": \""+parsedEcho[1]+"\"}";
-//                            System.out.println("jsonMsg=="+jsonMsg);
-//                            WSEnd.sendBack(jsonMsg,outputStream);
-//
-////                        thisRoom.sendMsgToAll(parsedEcho[0], parsedEcho[2]); //convert to JSON object
-//                        }
-//                        else{
-//                            System.out.println("nothing");
-//                        }
-////
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
                 }
             }
 

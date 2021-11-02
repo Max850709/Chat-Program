@@ -5,7 +5,7 @@ import java.net.Socket;
 public class Main {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         int port = 8080;
         ServerSocket serversocket = new ServerSocket(port);
         System.out.println("Server is running on port: "+port);
@@ -17,6 +17,7 @@ public class Main {
                     MyThread runner = new MyThread(client);
                     Thread th = new Thread(runner);
                     th.start();
+                    //th.join();
                 }
             }
             catch (FileNotFoundException e) {

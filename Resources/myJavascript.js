@@ -60,7 +60,9 @@ function handleMessageCB(event){
     let user=text.user;
     let usermsg=text.message;
 
-    message.append(user+" "+usermsg);
+    let time = new Date();
+    let month= time.getMonth()+1;
+    message.append(month+"/"+time.getDate()+" "+time.getHours()+":"+time.getMinutes()+" "+user+usermsg);
     message.append(br);
 
     br.scrollIntoView();

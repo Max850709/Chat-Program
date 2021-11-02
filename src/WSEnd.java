@@ -1,11 +1,12 @@
 import java.io.*;
 import java.net.Socket;
-import java.nio.Buffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WSEnd {
-    static Room temp = null;
-    static String roomName;
+
+//    static String roomName;
+    static Room room;
     public static void dealwithmsg(DataInputStream dis, DataOutputStream outputStream, Socket client_) throws IOException {
 
         String echoMessage = decodeBytes(dis);
@@ -17,28 +18,34 @@ public class WSEnd {
 
         char colonCheck = parsedEcho[1].charAt(0); //for detecting "username: message"
         System.out.println("colon check: "+colonCheck);
-
-        if(parsedEcho[0].equals("join")) {         // client wants to join room
+        String tempR = null;
+        if(parsedEcho[0].equals("join")) {
             System.out.println("user joined room");
-            roomName = parsedEcho[1];    // gets room name
-//            temp=new Room(roomName);
-            temp.getRoom(roomName,client_);
-            temp.addClient();
+            String roomName = parsedEcho[1];
+            //tempR=roomName;
+            room = Room.getRoom(roomName);
+            System.out.println("ROOMMMMMM"+room);
+            room.addClient(client_);
+
+//            room = Room.getRoom(roomName);
+//            room.addClient(client_);
             System.out.println("user is in room: " + roomName);
 //                            thisRoom = Room.getRoom(roomName);  // gets or makes room
 //                        thisRoom.sendAllRoomMsgs(client);   // gets all messages from room
 //                        thisRoom.addClient(client);         // adds client socket to room
-            temp= new Room(parsedEcho[1]);
+            //temp= new Room(parsedEcho[1]);
         }
         else if( colonCheck == ':' ) {  //client wants to send a message
             System.out.println("checking for colon");
             String jsonMsg = "{\"user\": \""+parsedEcho[0]+
                     "\", \"message\": \""+parsedEcho[1]+"\"}";
             System.out.println("jsonMsg=="+jsonMsg);
-            temp.sendMsgToAll(jsonMsg,parsedEcho[1]);
-//            sendBack(jsonMsg,outputStream);
-            
-//                        thisRoom.sendMsgToAll(parsedEcho[0], parsedEcho[2]); //convert to JSON object
+
+            System.out.println("room::::!!!!"+room);
+            room.sendMsgToAll(jsonMsg);
+
+//          sendBack(jsonMsg,outputStream);
+
         }
         else{
             System.out.println("nothing");

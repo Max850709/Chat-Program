@@ -19,7 +19,7 @@ git clone https://github.com/Max850709/Chat-Program.git
 ```
 $ java -jar ChatServer.jar
 ```
-2. Turn on the web browser and go to [localhost](127.0.0.1)
+2. Turn on the web browser and go to [localhost:8080](127.0.0.1:8080)
 
 Example Readmes
 

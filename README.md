@@ -3,8 +3,9 @@
 This program provides multiple users to send messages at the same time in a private room. 
 
 # Background
-It is one of the assignment in my Master of Software Development in University of Utah, and it uses Java with Websocket to send the message within the program. 
-The front end is JavaScript and HTML.
+It is one of the assignment in my Master of Software Development in University of Utah.
+It uses _Java_ with _Websocket_ to send the message within the program. 
+The front end is _JavaScript_ and _HTML_.
 
 # Install
 Git clone to your local repository
